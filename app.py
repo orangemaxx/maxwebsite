@@ -28,4 +28,16 @@ def save_file(filename, args, template):
     with open(buildDir + filename, "w") as f:
         f.write(render_template("pages/" + template, **args))
 
+
+with app.app_context():
+    for postFile in os.listdir(relPath + "/blog/"):
+        with open(relPath + "/blog/" + postFile, "r") as file:
+            post = json.load(file)
+        save_file("/blog/" + postFile, post, "blogPost.html")
+
+    for page in pages:
+        args = pages[page]["args"]
+        template = pages[page]["template"]
+        save_file(page, args, template)
+
 # app.run(debug=True) # Only use for debugging purposes. Disable before push.

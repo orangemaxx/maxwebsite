@@ -1,1 +1,8 @@
-{}
+{
+    "index.html": {
+        "template": "index.html",
+        "args": {
+            "title": "Max's Website"
+        }
+    }
+}
